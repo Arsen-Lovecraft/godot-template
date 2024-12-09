@@ -17,6 +17,8 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 
 EventBus="*res://scripts/autoload/event_bus.gd"
 Global="*res://scripts/autoload/global.gd"
+SoundManager="*res://scripts/autoload/sound_manager.gd"
+SceneManager="*res://scripts/autoload/scene_manager.gd"
 
 [debug]
 
