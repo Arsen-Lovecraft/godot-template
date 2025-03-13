@@ -11,7 +11,12 @@ config_version=5
 [application]
 
 config/name="GodotTemplate"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="uid://c5rmp24b5u7va"
+
+[audio]
+
+buses/default_bus_layout="res://custom_resources/default_bus_layout.tres"
 
 [autoload]
 

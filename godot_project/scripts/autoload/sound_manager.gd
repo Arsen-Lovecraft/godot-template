@@ -1,38 +1,54 @@
+class_name SoundManagerClass
 extends Node
 
-var _sound_on: bool = true
-var _music_on: bool = true
-var _sfx_on: bool = true
+var _master_sound_level: int = 75:
+	get():
+		return _master_sound_level
+	set(value):
+		if(value > 100 or value <0):
+			return
+		else:
+			_master_sound_level = value
+var _sfx_sound_level: int = 75:
+	get():
+		return _sfx_sound_level
+	set(value):
+		if(value > 100 or value <0):
+			return
+		else:
+			_sfx_sound_level = value
+var _music_sound_level: int = 75:
+	get():
+		return _music_sound_level
+	set(value):
+		if(value > 100 or value < 0):
+			return
+		else:
+			_music_sound_level = value
 
-func is_sound_on() -> bool:
-	return _sound_on
+func _ready() -> void:
+	set_master_to(75)
+	set_music_to(75)
+	set_sfx_to(75)
 
-func is_music_on() -> bool:
-	return _music_on
+func set_master_to(value: int) -> void:
+	_master_sound_level = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), _volume_to_db(_master_sound_level))
 
-func is_sfx_on() -> bool:
-	return _sfx_on
+func set_sfx_to(value: int) -> void:
+	_sfx_sound_level = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), _volume_to_db(_sfx_sound_level))
 
-func turn_on_sound() -> void:
-	_sound_on = true
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
+func set_music_to(value: int) -> void:
+	_music_sound_level = value
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), _volume_to_db(_music_sound_level))
 
-func turn_off_soun() -> void:
-	_sound_on = false
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
+func _volume_to_db(volume: float) -> float:
+	if volume <= 0:
+		return -80
+	return 20 * log(volume / 100.0)
 
-func turn_on_music() -> void:
-	_music_on = true
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), false)
-
-func turn_off_music() -> void:
-	_music_on = false
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), true)
-
-func turn_on_sfx() -> void:
-	_sfx_on = true
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), false)
-
-func turn_off_sfx() -> void:
-	_sfx_on = false
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), true)
+func _db_to_volume(db: float) -> float:
+	if db <= -80:
+		return 0
+	return 100 * pow(10, db / 20.0)
