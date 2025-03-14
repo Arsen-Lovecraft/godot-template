@@ -20,7 +20,7 @@ func _ready() -> void:
 	_connect_signals()
 
 func _connect_signals() -> void:
-	_h_slider.value_changed.connect(_on_value_changed)
+	if _h_slider.value_changed.connect(_on_value_changed): printerr("Fail: ",get_stack())
 
 func _on_value_changed(value: float) -> void:
 	percent = int(value)

@@ -3,7 +3,7 @@ extends Node
 signal transition_finished
 
 var loading_screen: LoadingScreen
-var _loading_screen_scene:PackedScene = preload("res://scenes/other/loading_screen.tscn")
+var _loading_screen_scene : PackedScene = preload("uid://c2bqi4xuffjwt")
 var _load_scene:PackedScene
 var the_scene_path: String
 

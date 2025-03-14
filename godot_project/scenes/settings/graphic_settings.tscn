@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://c05ux4ga1jtti"]
+
+[ext_resource type="Script" uid="uid://cfwqxv117oojl" path="res://scenes/settings/graphic_settings.gd" id="1_axqny"]
+[ext_resource type="PackedScene" uid="uid://dngne50y67an7" path="res://scenes/settings/primitives/toggle_settings.tscn" id="2_07d4j"]
+
+[node name="GraphicSettings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_axqny")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WindowLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Window"
+
+[node name="WindowVBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FullscreenToggle" parent="VBoxContainer/WindowVBoxContainer" instance=ExtResource("2_07d4j")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ResolutionHBoxContainer2" type="HBoxContainer" parent="VBoxContainer/WindowVBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsLabel" type="Label" parent="VBoxContainer/WindowVBoxContainer/ResolutionHBoxContainer2"]
+layout_mode = 2
+text = "Window Resolution"
+
+[node name="ResolutionOptionButton" type="OptionButton" parent="VBoxContainer/WindowVBoxContainer/ResolutionHBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 3
+item_count = 10
+popup/item_0/text = "1280×720"
+popup/item_0/id = 0
+popup/item_1/text = "1366×768"
+popup/item_1/id = 1
+popup/item_2/text = "1600×900"
+popup/item_2/id = 2
+popup/item_3/text = "1920×1080"
+popup/item_3/id = 3
+popup/item_4/text = "2560×1080"
+popup/item_4/id = 4
+popup/item_5/text = "2560×1440"
+popup/item_5/id = 5
+popup/item_6/text = "3200×1800"
+popup/item_6/id = 6
+popup/item_7/text = "3440×1440"
+popup/item_7/id = 7
+popup/item_8/text = "3840×2160"
+popup/item_8/id = 8
+popup/item_9/text = "5120×1440"
+popup/item_9/id = 9
+
+[node name="FrameRateHBoxContainer3" type="HBoxContainer" parent="VBoxContainer/WindowVBoxContainer"]
+layout_mode = 2
+
+[node name="OptionsLabel" type="Label" parent="VBoxContainer/WindowVBoxContainer/FrameRateHBoxContainer3"]
+layout_mode = 2
+text = "Frame Rate"
+
+[node name="FrameRateOptionButton" type="OptionButton" parent="VBoxContainer/WindowVBoxContainer/FrameRateHBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+selected = 0
+item_count = 6
+popup/item_0/text = "No Limit"
+popup/item_0/id = 0
+popup/item_1/text = "30"
+popup/item_1/id = 1
+popup/item_2/text = "60"
+popup/item_2/id = 2
+popup/item_3/text = "75"
+popup/item_3/id = 3
+popup/item_4/text = "120"
+popup/item_4/id = 4
+popup/item_5/text = "144"
+popup/item_5/id = 5
+
+[node name="VsyncToggle" parent="VBoxContainer/WindowVBoxContainer" instance=ExtResource("2_07d4j")]
+unique_name_in_owner = true
+layout_mode = 2
