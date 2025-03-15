@@ -33,8 +33,8 @@ func _on_resolution_item_selected(index: int) -> void:
 	config.set_resolution(int(reses[0]),int(reses[1]))
 
 func _on_frame_rate_item_selected(index: int) -> void:
-	var rate: String = _resolution_option_button.get_item_text(index)
-	if(rate == "No limit"):
+	var rate: String = _frame_rate_option_button.get_item_text(index)
+	if(rate == "No Limit"):
 		config.set_frame_rate(0,true)
 	else:
 		config.set_frame_rate(int(rate),false)

@@ -12,7 +12,7 @@ config_version=5
 
 config/name="GodotTemplate"
 config/version="0.0.1"
-run/main_scene="uid://ldg2jq7gg87x"
+run/main_scene="uid://dtmc4j2hvyhwn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://c5rmp24b5u7va"
 
@@ -40,6 +40,7 @@ gdscript/warnings/return_value_discarded=1
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+window/size/resizable=false
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"

@@ -32,20 +32,20 @@ var _screen_width: int = 1920:
 	get():
 		return _screen_width
 	set(value):
-		if(value <= 10000 or value >= 100):
+		if(value <= 10000 and value >= 100):
 			_screen_width = value
 var _screen_height: int = 1080:
 	get():
 		return _screen_height
 	set(value):
-		if(value <= 10000 or value >= 100):
+		if(value <= 10000 and value >= 100):
 			_screen_height = value
 var _is_full_screen: bool = false
 var _frame_rate: int = 0:
 	get():
 		return _frame_rate
 	set(value):
-		if(value > 0 or value <= 2000):
+		if(value > 0 and value <= 2000):
 			_frame_rate = value
 var _is_unlimited_frame_rate: bool = true
 var _is_vsync_on: bool = false
@@ -54,6 +54,11 @@ func _init() -> void:
 	set_master_to(_master_sound_level)
 	set_music_to(_sfx_sound_level)
 	set_sfx_to(_music_sound_level)
+	set_resolution(_screen_width,_screen_height)
+	set_fullscreen(_is_full_screen)
+	set_frame_rate(_frame_rate,_is_unlimited_frame_rate)
+	set_vsync(_is_vsync_on)
+	
 
 func get_master_value() -> int:
 	return _master_sound_level
@@ -98,6 +103,7 @@ func set_resolution(width: int, height: int) -> void:
 	_screen_width = width
 	_screen_height = height
 	DisplayServer.window_set_size(Vector2(_screen_width, _screen_height))
+	DisplayServer.window_set_position(Vector2(0,0))
 
 func get_vsync() -> bool:
 	return _is_vsync_on
